@@ -2,10 +2,8 @@
 # It will then combine the loops into a new audio file
 
 import os
-import ffmpeg
 import json
 from pydub import AudioSegment
-from pydub.playback import play
 
 def run():
     ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -57,8 +55,6 @@ def run():
         print(f"Loop idx {longest_idx} is longest with {round(longest, ndigits=2)} seconds", end="\n\n")
 
 
-        # todo # Git, Drie Ton have single-play mods (<PlyMod>)
-        # todo # Output different audio files for every single-play mod as trackName-v1, trackName-v2 etc.
         # Getting volumes from json
         volumes = []
         json_file = ""
