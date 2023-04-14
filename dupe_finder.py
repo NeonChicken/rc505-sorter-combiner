@@ -4,32 +4,34 @@
 import os
 from distutils.dir_util import copy_tree
 
-to_copy = "2022-5-5"
+# folder_name should be something like "2022-8-31"
+def run(folder_name):
+    to_copy = folder_name
 
-ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+    ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 
-try:
-    os.mkdir(ROOT_DIR + "\\" + "Projects")
-except FileExistsError:
-    pass
+    try:
+        os.mkdir(ROOT_DIR + "\\" + "Projects")
+    except FileExistsError:
+        pass
 
-project_dir = ROOT_DIR + "\\" + "Projects"
-copy_dir = ROOT_DIR + "\\" + to_copy + "\\SORTED"
+    project_dir = ROOT_DIR + "\\" + "Projects"
+    copy_dir = ROOT_DIR + "\\" + to_copy + "\\SORTED"
 
-print("Copying files...")
+    print("Copying files...")
 
-dir_list = os.listdir(copy_dir)
-project_list = os.listdir(project_dir)
-for dir in dir_list:
-    dot_loc = dir.find(".")
-    # proj_name is after the index, dot and space -->  0. PROJ_NAME
-    proj_name = dir[dot_loc + 2:]
-    if proj_name != "A" and proj_name != "INIT MEMORY":
-        if proj_name not in project_list:
-            os.mkdir(project_dir + "\\" + proj_name)
-            copy_tree(copy_dir + "\\" + dir, project_dir + "\\" + proj_name)
+    dir_list = os.listdir(copy_dir)
+    project_list = os.listdir(project_dir)
+    for dir in dir_list:
+        dot_loc = dir.find(".")
+        # proj_name is after the index, dot and space -->  0. PROJ_NAME
+        proj_name = dir[dot_loc + 2:]
+        if proj_name != "A" and proj_name != "INIT MEMORY":
+            if proj_name not in project_list:
+                os.mkdir(project_dir + "\\" + proj_name)
+                copy_tree(copy_dir + "\\" + dir, project_dir + "\\" + proj_name)
 
-print("Success!")
+    print("Success!")
 
 # If already in projects, do not copy
 # Remove ID
