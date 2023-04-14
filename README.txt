@@ -5,4 +5,6 @@ What this is for:
 HOW TO USE:
 1. Copy the 'ROLAND' folder from the RC-505 to this project's root directory
 2. Rename the copied 'ROLAND' folder to the current date as YYYY-MM-DD [E.g. 2023-4-14]
-3. Run main.py -> Python main.py
+4. Open terminal/command prompt and run:
+	- pip install pydub [if not yet installed]
+	- python main.py

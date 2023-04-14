@@ -1,4 +1,4 @@
-import sorter, dupe_finder, audio_combiner, archive, os
+import sorter, dupe_finder, audio_combiner, archive, os, shutil
 
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR_LIST = os.listdir(ROOT_DIR)
@@ -22,6 +22,8 @@ if target_dir:
     sorter.run(target_dir)
     dupe_finder.run(target_dir)
     audio_combiner.run()
+
+    shutil.move(f"{ROOT_DIR}\\{target_dir}", f"{ROOT_DIR}\\~Archive")
     archive.run()
 else:
     print("No folder found that start with two digits -> YYYY-MM-DD")
